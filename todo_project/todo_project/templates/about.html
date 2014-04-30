@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+                <div id="content">
+                    <div id="container">
+                        <div class="white-bg">
+                            <aside class="menu">
+                                <div class="tit-bg">
+                                    <div class="tit-con">                                  
+                                        <p style="font:bold 20px arial; color: #fff;" >Categories</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul class="side-bar">
+                                        <li><a href="{% url 'task_list_create' %}">&#10148; &nbsp; Add new list</a></li>
+                                        <li><a href="{% url 'task_create' %}">&#10148; &nbsp; Add new task</a></li>
+                                        <li><a href="{% url 'tasks_page' %}">&#10148; &nbsp; View current list</a></li>
+                                        <li><a href="{% url 'events_page' %}">&#10148; &nbsp; Create events</a></li>
+                                        <li><a href="{% url 'contact_page' %}">&#10148; &nbsp; Arrange appointments</a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+                            
+                            <article id="about">
+                                <div class="tl">
+                                    <h2 style="font:bold 20px arial; color: #4d5467;">About us</h2>
+                                </div>
+                                <div class="about-box">	
+									<div style="padding: 20px;">
+										<h3 style="font:bold 16px arial; color: #4d5467; padding-bottom: 10px;">About Project</h3>
+										<p style="text-align:justify; text-indent: 20px; font-size: 14px; line-height:35px;">This is my SAD Assignment. My website is all about <strong>To-do list</strong>. Based on the knowledge I got in the lectures, the instructor’s guide, the supporter's help and the resources on Internet, I implement to design the website with Model-View-Controller by Python, Django (Python framework), Bootstrap, HTML, CSS, and JQUERY… Despite some existing drawback, this assignment inspires me to complete on time and deal with problems of website. Moreover, it also motivates me to put more effort into my study to know how to code and understand the computer languages.</p>
+										<br>
+										<h3 style="font:bold 16px arial; color: #4d5467; padding-bottom: 10px;">About Supporter</h3>
+										<p style="text-align:justify; text-indent: 20px; font-size: 14px; line-height:35px;">Thanks to the supporter <a href="https://www.facebook.com/son.hai.735">Mr.Son Hai</a>, I can handle my assignment easier.</p>
+									</div>
+								</div>
+							</article> 
+                        </div>                        
+                    </div>                                  
+                </div>
+                
+                <div class="blank">            
+                </div>
+
+{% endblock %}

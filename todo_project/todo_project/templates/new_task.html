@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+                <div class="blank"></div>
+                <div class="blank"></div>
+                
+                <!-- body -->
+                <div id="content">
+                    <div id="container">
+                        <div class="white-bg">
+                            <aside class="menu">
+                                <div class="tit-bg">
+                                    <div class="tit-con">                                  
+                                        <p style="font:bold 20px arial; color: #fff;" >Categories</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul class="side-bar">
+                                        <li><a href="{% url 'task_list_create' %}">&#10148; &nbsp; Add new list</a></li>
+                                        <li class="active"><a href="{% url 'task_create' %}">&#10148; &nbsp; Add new task</a></li>
+                                        <li><a href="{% url 'tasks_page' %}">&#10148; &nbsp; View current list</a></li>
+                                        <li><a href="{% url 'events_page' %}l">&#10148; &nbsp; Create events</a></li>
+                                        <li><a href="#">&#10148; &nbsp; Arrange appointments</a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+
+                    <!-- create task form -->
+                    <form action="{% url 'task_create' %}" method="POST" >{% csrf_token %}
+                            <article id="add-task">
+                                <div class="tl">
+                                    <h2 style="font:bold 20px arial; color: #4d5467;">Add a task</h2>
+                                </div>
+                                <div class="task-box">
+									<table width="540px" border="0px">			
+										<tr>
+											<td valign="top" style="padding:18px 0px 10px 80px;">
+												<label for="title">Title</label>
+											</td>
+											<td valign="top" style="padding-top:7px">
+                                                {{ form.errors.title }}
+                                                {{ form.title }}
+											</td>
+										</tr>
+					 
+										<tr>
+											<td valign="top" style="padding:15px 0px 10px 80px;">
+												<label for="tasklist_name">Task list</label>
+											</td>
+											<td valign="top">
+                                                {{ form.errors.todo_list }}
+                                                {{ form.todo_list }}
+											</td>
+										</tr>
+										
+										<tr>
+											<td valign="top" style="padding:15px 0px 10px 80px;">
+												<label for="tasklist_name">Priority</label>
+											</td>
+											<td valign="top">
+												{{ form.errors.priority }}
+                                                {{ form.priority }}
+											</td>
+										</tr>
+										
+										<tr>
+											<td valign="top" style="padding:15px 0px 10px 80px;">
+												<label for="start">Start date</label>
+											</td>
+											<td valign="top">
+                                                <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
+                                                {{ form.errors.start_date }}
+                                                {{ form.start_date }}
+                                                <span class="add-on"><i class="icon-th"></i></span>
+											</td>
+										</tr>
+										
+										<tr>
+											<td valign="top" style="padding:15px 0px 10px 80px;">
+												<label for="due">Due date</label>
+											</td>
+											<td valign="top">
+												{{ form.errors.due_date }}
+                                                {{ form.due_date }}
+											</td>
+										</tr>
+										
+										<tr>
+											<td valign="top" style="padding:15px 0px 10px 80px;">
+												<label for="notes">Notes</label>
+											</td>
+											<td valign="top">
+                                                {{ form.description.error }}
+                                                {{ form.description }}
+											</td>
+										</tr>
+									</table>	
+                                </div>
+								<div class="choice">
+									<button class="button2">
+										<a style="font:bold 14px Arial; color: #fff; padding: 10px 4px;">Save</a>
+									</button> 
+									<button class="button2">
+										<a style="font:bold 14px Arial; color: #fff; padding: 10px 4px;">Cancel</a>
+									</button> 
+                                </div>
+							</article>
+                        </form>
+                        </div>                        
+                    </div>                                  
+                </div>
+                
+                <div class="blank">            
+                </div>
+{% endblock %}

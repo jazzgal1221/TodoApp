@@ -1,0 +1,41 @@
+{% load tags %}
+<div class="container navbar-font">
+   <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TODO LIST</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right navbar-btn">
+            <li class="{% if not request %}
+                        active
+                    {% else %}
+                        {% navactive request 'index' %}
+                    {% endif %}">
+
+                <a href="{% url 'index' %}">Home</a></li>
+
+
+            <li class="{% if request %}
+                    {% navactive request 'about_page' %}
+                    {% endif %}">
+
+                <a href="{% url 'about_page' %}">About</a></li>
+
+
+            <li class="{% if request %}
+                    {% navactive request 'tasks_page' %}
+                    {% endif %}"><a href="{% url 'tasks_page' %}">TaskList</a></li>
+            <li class="{% if request %}
+                    {% navactive request 'events_page' %}
+                    {% endif %}"><a href="{% url 'events_page' %}">Event</a></li>
+            <li class="{% if request %}
+                        {% navactive request 'contact_page' %}
+                        {% endif %}"><a href="{% url 'contact_page' %}">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+
+</div>

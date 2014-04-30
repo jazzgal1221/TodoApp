@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+                <div class="blank"></div>
+                <div class="blank"></div>
+                <div class="blank"></div>
+                <!-- body -->
+                <div id="content">
+                    <div id="container" class="container_3">
+                        <div class="white-bg white-bg_3">
+                            <aside class="menu menu_3">
+                                <div class="tit-bg">
+                                    <div class="tit-con">                                  
+                                        <p style="font:bold 20px arial; color: #fff;" >Categories</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul class="side-bar">
+                                        <li class="active"><a href="{% url 'task_list_create' %}">&#10148; &nbsp; Add new list</a></li>
+                                        <li><a href="{% url 'task_create' %}">&#10148; &nbsp; Add new task</a></li>
+                                        <li><a href="{% url 'tasks_page' %}">&#10148; &nbsp; View current list</a></li>
+                                        <li><a href="{% url 'events_page' %}">&#10148; &nbsp; Create events</a></li>
+                                        <li><a href="{% url 'contact_page' %}">&#10148; &nbsp; Arrange appointments</a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+
+                    <!-- create task form -->
+                    <form action="{% url 'task_create' %}" method="POST" >{% csrf_token %}
+                            <article id="add-task">
+                                <div class="tl">
+                                    <h2 style="font:bold 20px arial; color: #4d5467;">Add New list</h2>
+                                </div>
+                                <div class="task-box task-box_2">
+									<table width="540px" border="0px">
+										<tr>
+											<td valign="top" style="padding:18px 0px 10px 80px;">
+												<label for="title">Title</label>
+											</td>
+											<td valign="top" style="padding-top:7px">
+                                                {{ form.errors.title }}
+                                                {{ form.title }}
+											</td>
+										</tr>
+
+
+									</table>
+                                </div>
+								<div class="choice">
+									<button class="button2">
+										<a style="font:bold 14px Arial; color: #fff; padding: 10px 4px;">Save</a>
+									</button>
+									<button class="button2">
+										<a style="font:bold 14px Arial; color: #fff; padding: 10px 4px;">Cancel</a>
+									</button>
+                                </div>
+							</article>
+                        </form>
+                        </div>                        
+                    </div>                                  
+                </div>
+                
+                <div class="blank">            
+                </div>
+{% endblock %}

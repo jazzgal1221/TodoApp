@@ -1,0 +1,78 @@
+/*! project specific CSS goes here. */
+body {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #ebebeb;
+  background-color: #2b3e50;
+}
+
+.main-info {
+  background-color: #25323D;
+  margin-bottom: 21px;
+  margin-top: 21px;
+}
+
+.footer-more {
+  background-color: #1E272E;
+}
+
+.footer-info {
+  background-color: #0D1216;
+    margin-bottom: 0;
+}
+
+.main-info-header {
+  background-color: #1C2833 !important;
+}
+
+.navlink-bottom {
+  margin: 0 2%;
+}
+
+.no-left-margin {
+  margin-left: 0;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.active {
+  color: #ffffff;
+  background-color: #25323D;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+a:hover,
+a:focus {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.info-block {
+  margin-top: 0px;
+}
+
+.sub-title {
+  margin-top: 10px !important;
+}
+
+ul.about-tag > li.active {
+  background-color: #4e5d6c;
+}
+
+ul.about-tag > li.active >a {
+  background-color: #4e5d6c !important;
+  border: 1px solid #1C2833;
+  border-bottom-color: #4e5d6c;
+}
+
+ul.about-tag > li > a:hover {
+  background-color: #1C2833 !important;
+}
+
+div.about-content > div.active {
+  background-color: #4e5d6c;
+}

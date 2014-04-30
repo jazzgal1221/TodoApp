@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+                <div class="blank"></div>
+                <div class="blank"></div>
+                <div class="blank"></div>
+
+                <!-- body -->
+                <div id="content">
+                    <div id="container">
+                        <div class="white-bg">
+                            <aside class="menu">
+                                <div class="tit-bg">
+                                    <div class="tit-con">                                  
+                                        <p style="font:bold 20px arial; color: #fff;" >Categories</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul class="side-bar">
+                                        <li><a href="{% url 'task_list_create' %}">&#10148; &nbsp; Add new list</a></li>
+                                        <li><a href="{% url 'task_create' %}">&#10148; &nbsp; Add new task</a></li>
+                                        <li><a href="{% url 'tasks_page' %}">&#10148; &nbsp; View current list</a></li>
+                                        <li><a href="{% url 'events_page' %}">&#10148; &nbsp; Create events</a></li>
+                                        <li class="active"><a href="{% url 'contact_page' %}">&#10148; &nbsp; Arrange appointments</a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+                            
+                            <article id="about">
+                                <div class="tl">
+                                    <h2 style="font:bold 20px arial; color: #4d5467;">Contact us</h2>									
+                                </div>
+                                <div class="about-box">	
+									<div style="padding: 20px;">
+										<p style="text-align:justify; padding-left: 80px; font-size: 14px; line-height:35px; letter-spacing: 1px;">
+											<strong>PHONE:</strong> &nbsp; &nbsp; &nbsp; &nbsp;<i>016 49894 016</i></br>
+											<strong>EMAIL:</strong> &nbsp; &nbsp; &nbsp; &nbsp; <i>linh.yolily@gmail.com</i><br>
+											<strong>SKYPE:</strong> &nbsp; &nbsp; &nbsp; &nbsp;<i>linhyo14293</i><br>
+											<strong>ADDRESS:</strong> &nbsp; <i>Room 706, Building C, Hanoi University</i><br>
+										</p>
+									</div>
+                                </div>
+							</article> 
+                        </div>                        
+                    </div>                                  
+                </div>
+                
+                <div class="blank">            
+                </div>
+{% endblock %}

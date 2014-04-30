@@ -1,0 +1,51 @@
+
+<div class="modal fade" id="detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<form method="POST" action="{% url 'event_detail' 2 %}">{% csrf_token %}
+  <div class="modal-dialog">
+    <div class="modal-content" style="z-index: 9999 !important;" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Update an event</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        <label for="title">Title</label>
+        </p>
+        <p>
+         {{ form.errors.title}}
+         {{ form.title }}
+        </p>
+
+        <p>
+        <label for="created_date">Created at</label>
+        </p>
+        <p>
+         {{ form.errors.created_date}}
+         {{ form.created_date }}
+        </p>
+
+        <p>
+        <label for="description">Description</label>
+        </p>
+        <p>
+         {{ form.errors.description}}
+         {{ form.description }}
+        </p>
+
+        <p>
+        <label for="location">Location</label>
+        </p>
+        <p>
+         {{ form.errors.location}}
+         {{ form.location }}
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button2" data-dismiss="modal">Close</button>
+        <button class="button2" type="submit">Save</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>

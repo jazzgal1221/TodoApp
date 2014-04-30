@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+
+                <div id="content">
+                    <div id="container_2">
+                        <div class="white-bg_2">
+                            <aside class="menu_2">
+                                <div class="tit-bg">
+                                    <div class="tit-con">                                  
+                                        <p style="font:bold 20px arial; color: #fff;" >Categories</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul class="side-bar">
+                                        <li><a href="{% url 'task_list_create' %}">&#10148; &nbsp; Add new list</a></li>
+                                        <li><a href="{% url 'task_create' %}">&#10148; &nbsp; Add new task</a></li>
+                                        <li><a href="{% url 'tasks_page' %}">&#10148; &nbsp; View current list</a></li>
+                                        <li class="active"><a href="{% url 'events_page' %}">&#10148; &nbsp; Create events</a></li>
+                                        <li><a href="{% url 'contact_page' %}">&#10148; &nbsp; Arrange appointments</a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+                            
+                            <article id="event">
+                                <div class="tl">
+                                    <h2 style="font:bold 20px arial; color: #4d5467;">Event Calendar</h2>
+                                </div>
+                                {% include "event_form.html" %}
+                                {% include "event_detail.html" %}
+                                <div class="calendar-box">
+
+                                    <div id="calendar"></div>
+
+								</div>
+							</article> 
+                        </div>                        
+                    </div>
+
+
+
+                </div>
+                
+                <div class="blank">            
+                </div>
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/underscore-min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/moment.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/calendar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+
+<script type="text/javascript">
+    var calendar = $("#calendar").calendar(
+        {
+            tmpl_path: "{% static 'calendar_tmp/' %}",
+            modal : "#events-modal",
+            events_source: 'event_list'
+
+//            events_source: function () { return []; }
+        });
+
+</script>
+
+
+{% endblock %}

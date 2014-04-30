@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+                <div class="blank"></div>
+                <div class="blank"></div>
+                <div class="blank"></div>
+                
+                <!-- body -->
+                <div id="content">
+                    <div id="container">
+                        <div class="white-bg">
+                            <aside class="menu">
+                                <div class="tit-bg">
+                                    <div class="tit-con">                                  
+                                        <p style="font:bold 20px arial; color: #fff;" >Categories</p>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <ul class="side-bar">
+                                        <li><a href="{% url 'task_list_create' %}">&#10148; &nbsp; Add new list</a></li>
+                                        <li><a href="{% url 'task_create' %}">&#10148; &nbsp; Add new task</a></li>
+                                        <li class="active"><a href="{% url 'tasks_page' %}">&#10148; &nbsp; View current list</a></li>
+                                        <li><a href="{% url 'events_page' %}">&#10148; &nbsp; Create events</a></li>
+                                        <li><a href="{% url 'contact_page' %}">&#10148; &nbsp; Arrange appointments</a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+                            
+                            <article id="view-list">
+                                <div class="tl">
+                                    <h2 style="font:bold 20px arial; color: #4d5467;">View current lists</h2>
+                                </div>
+
+                                <div class="wrapper">
+                                {% for list_dict in task_listing %}
+
+                                <div class="view-box">
+									<table width="600px" border="0px">
+									   <thead>
+										  <tr>
+											 <td colspan="6" style="text-align: left;"><img src="{% static 'img/shrink.png' %}" alt="minor" width="25px"> &nbsp; <span style="font: bold 20px arial; color: #444d68">{{ list_dict.list_object.title }}</span></td>
+										  </tr>
+									   </thead>
+									   <tbody>
+											<tr>
+												<th>
+												</th>
+												<th>Priority</th>
+												<th>Tasks</th>
+												<th>Due date</th>
+												<th>Edit</th>
+												<th>Delete</th>
+											</tr>
+                                            {% for task in list_dict.list_tasks %}
+											<tr>
+												<td>
+													<form>
+														<input type="checkbox" name="check-box" value="check">
+													</form>
+												</td>
+												<td>
+                                                    <img src="{% if task.priority == 3 %}
+                                                            {% static 'img/high.png' %}
+                                                            {% endif %}
+
+                                                            {% if task.priority == 1 %}
+                                                            {% static 'img/low.png' %}
+                                                            {% endif %}
+
+                                                            {% if task.priority == 2 %}
+                                                            {% static 'img/medium.png' %}
+                                                            {% endif %}" alt="high" width="15px">
+                                                    <div class="tmp"></div>
+                                                </td>
+												<td style="text-align: left;" width="300px">{{ task.title }}</td>
+												<td>{{ task.due_date }}</td>
+												<td>
+                                                     <a href="" data-toggle="modal" data-target="#task_update{{ task.id }}"  >
+                                                        <img src="{% static 'img/edit.png' %}" alt="edit" width="30px">
+                                                    </a>
+                                                </td>
+												<td>
+                                                     <a href="" data-toggle="modal" data-target="#task{{ task.id }}"  >
+                                                    <img src="{% static 'img/delete.png' %}" alt="remove" width="20px">
+
+
+												</a>
+
+                                                </td>
+
+                                                 {% include "task_delete_confirm.html" %}
+                                                 {% include "task_update.html" %}
+
+
+
+
+
+											</tr>
+                                            {% endfor %}
+									   </tbody>
+									</table>
+								</div>
+								{% endfor %}
+                            </div>
+							</article> 
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="blank">            
+                </div>
+{% endblock %}
