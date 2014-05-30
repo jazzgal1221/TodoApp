@@ -2,6 +2,8 @@
 from django import forms
 import datetime
 from todo import models as todo_models
+from django.contrib.auth.models import User
+import datetime
 
 WIDGET_STYLE = {
     'type': 'text'
@@ -108,11 +110,19 @@ class EventForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(EventForm, self).clean()
-        #import ipdb;ipdb.set_trace()
         return cleaned_data
 
-from django.contrib.auth.models import User
 
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+        self.cleaned_data['last_login'] = datetime.datetime.now()
+        self.cleaned_data['date_joined'] = datetime.datetime.now()
+        return super(UserForm, self).clean()
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -134,17 +144,22 @@ class TaskForm(forms.Form):
     todo_list = forms.ChoiceField(widget=forms.Select(
                                   attrs=select_field))
 
-    start_date = forms.DateTimeField(input_formats=['%d/%m/%Y'], widget=forms.TextInput(
+    start_date = forms.DateTimeField(input_formats=['%m/%d/%Y'], widget=forms.TextInput(
         attrs=date_field))
 
-    due_date = forms.DateTimeField(input_formats=['%d/%m/%Y'], widget=forms.TextInput(
+    due_date = forms.DateTimeField(input_formats=['%m/%d/%Y'], widget=forms.TextInput(
         attrs=dict(due_date_field)))
 
     def __init__(self, *args, **kwargs):
-        super(TaskForm, self).__init__(*args, **kwargs)
+        kargs = dict(kwargs)
+        if 'request' in kargs:
+            kargs.pop('request')
+        super(TaskForm, self).__init__(*args, **kargs)
         # Populate todo list & priority
+        user_id = kwargs['request'].user.id
         task_list_choices = [(x.pk, x.title) for x in
-                             todo_models.TaskList.objects.all()]
+                             todo_models.TaskList.objects.filter(
+                                 creator_id=user_id)]
         self.fields['todo_list'].choices = task_list_choices
         # Retrieve priority choice from model
         self.fields['priority'].choices = todo_models.PRIORITY_CHOICES

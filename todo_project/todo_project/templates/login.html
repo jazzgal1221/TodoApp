@@ -3,9 +3,134 @@
 {% block title %}| Login{% endblock title %}
 
 {% block login %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
+
+<div style="height: 500px"></div>
+
+
+
+    <!--<div class="panel panel-primary">-->
+      <!--<div class="panel-heading">-->
+        <!--<h3 class="panel-title">Panel title</h3>-->
+      <!--</div>-->
+      <!--<div class="panel-body">-->
+        <!--Panel content-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+
+<!-- Modal -->
+<div class="modal" id="login_form" tabindex="-1" role="dialog" data-show="true" aria-labelledby="myModalLabel" aria-hidden="true">
+<form action="{% url 'login' %}" method="POST" >{% csrf_token %}
+  <div class="modal-dialog">
+    <div class="modal-content" style="z-index: 9999 !important;" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+
+          <!-- Update fields -->
+
+            <div class="row">
+                <div class="col-md-4 left-col">
+                    <label for="title">Username</label>
+                </div>
+                <div class="col-md-8">
+                    {{ form.errors.username }}
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 left-col">
+                    <label for="title">Password</label>
+                </div>
+                <div class="col-md-8">
+                            {{ form.errors.password }}
+                            {{ form.password }}
+                </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button2" data-dismiss="modal" data-toggle="modal" data-target="#register_form">Register</button>
+        <button class="button2">Login</button>
+      </div>
+    </div>
+  </div>
 </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="register_form" tabindex="-1" role="dialog" data-show="true" aria-labelledby="myModalLabel" aria-hidden="true">
+<form action="{% url 'register' %}" method="POST" >{% csrf_token %}
+  <div class="modal-dialog">
+    <div class="modal-content" style="z-index: 9999 !important;" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Register</h4>
+      </div>
+      <div class="modal-body">
+
+          <!-- Update fields -->
+            <div class="row">
+                <div class="col-md-4 left-col">
+                    <label for="title">Username</label>
+                </div>
+                <div class="col-md-8">
+                    {{ userform.errors.username }}
+                    {{ userform.username }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 left-col">
+                    <label for="title">Password</label>
+                </div>
+                <div class="col-md-8">
+                            {{ userform.errors.password }}
+                            {{ userform.password }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 left-col">
+                    <label for="title">Email</label>
+                </div>
+                <div class="col-md-8">
+                            {{ userform.errors.email }}
+                            {{ userform.email }}
+                </div>
+            </div>
+
+            <div class="row" style="display: none">
+                <div class="col-md-4 left-col">
+                    <label for="title">Last Login</label>
+                </div>
+                <div class="col-md-8">
+                            {{ userform.errors.last_login }}
+                            {{ userform.last_login }}
+                </div>
+            </div>
+
+            <div class="row" style="display: none">
+                <div class="col-md-4 left-col">
+                    <label for="title">Date Joined</label>
+                </div>
+                <div class="col-md-8">
+                            {{ userform.errors.date_joined }}
+                            {{ userform.date_joined }}
+                </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button2" data-dismiss="modal" data-toggle="modal" data-target="#login_form">Back</button>
+        <button class="button2">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+
 {% endblock login %}

@@ -9,13 +9,16 @@ from todo import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name="index"),
+    url(r'^$', 'todo.views.index', name="index"),
     url(r'tasks/new_task_list', 'todo.views.task_list_create', name="task_list_create"),
     url(r'tasks/new', 'todo.views.task_create', name="task_create"),
     url(r'tasks/delete/([0-9]+)/$', 'todo.views.task_delete', name="task_delete"),
     url(r'tasks/update/([0-9]+)/$', 'todo.views.task_update', name="task_update"),
     url(r'about', TemplateView.as_view(template_name='about.html'), name="about_page"),
     url(r'event_list', 'todo.views.event_list', name='event_list'),
+    url(r'^login/$', views.LoginView.as_view(), name='login'),
+    url(r'^register/$', 'todo.views.register', name='register'),
+    url(r'^logout/$', 'todo.views.logout_view', name='logout'),
     url(r'tasks', 'todo.views.task_list', name="tasks_page"),
     url(r'events', 'todo.views.events', name="events_page"),
     url(r'events/new', 'todo.views.create_event', name="event_create"),

@@ -26,7 +26,7 @@ class TaskList(models.Model):
         """
         output = self.title
         if self.creator:
-            output += " - " + self.creator
+            output += " - " + self.creator.username
         return output
 
     def num_tasks(self):
@@ -59,13 +59,15 @@ class Event(models.Model):
     """ An event represent
     """
 
-    title = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField(max_length=100)
 
     created_date = models.DateTimeField(default=datetime.datetime.now, blank=True, null=True)
 
     description = models.TextField(max_length=5000, blank=True, null=True)
 
-    location = models.CharField(max_length=100, blank=True, null=True)
+    location = models.CharField(max_length=100)
+
+    creator = models.ForeignKey(User, blank=True, null=True)
 
     def __str__(self):
         """ Object representation

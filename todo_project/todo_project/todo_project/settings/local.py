@@ -36,6 +36,7 @@ DATABASES = {
 }
 ########## END DATABASE CONFIGURATION
 
+LOGIN_REDIRECT_URL = '/'
 
 ########## CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
